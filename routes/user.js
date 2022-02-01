@@ -11,22 +11,26 @@ router.get("/index", (req, res, error) => {
 });
 
 
-router.get("/:image", async(req, res,error) => {
+router.get("/", async(req, res,error) => {
  
-  
-   let url = `https://wireframe.intellimedianetworks.com/gohtv/images/profile/expression14.jpg`;
+  console.log(req.query)
+  //  let url = `https://wireframe.intellimedianetworks.com/gohtv/images/profile/${req.params.url}`;
 //   let url =
 //     "https://images.unsplash.com/photo-1640622656891-04960a7aa678?ixlib=rb-1.2.1&ixid=MnwxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=386&q=80";
-  console.log(url)
+  let url=(req.query.url);
   res.setHeader("Content-Type", "image/jpeg");
 
   axios.get(url, { responseType: "stream" })
   .then(response => {  
-      // Saving file to working directory  
-      response.data.pipe(res)
+      // Saving file to working directory
+      if(response.data)  
+          response.data.pipe(res);
+
+      else
+          res.json({message:"No media found!"})
    })  
    .catch(error=>{
-      console.log(error)
+      res.json({ message: "No media found!" });
    })
   
   
