@@ -13,7 +13,7 @@ router.get("/index", (req, res, error) => {
 
 router.get("/", async(req, res,error) => {
  
-  console.log(req.query)
+  
   //  let url = `https://wireframe.intellimedianetworks.com/gohtv/images/profile/${req.params.url}`;
 //   let url =
 //     "https://images.unsplash.com/photo-1640622656891-04960a7aa678?ixlib=rb-1.2.1&ixid=MnwxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=386&q=80";
